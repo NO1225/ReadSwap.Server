@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReadSwap.Api</name>
+    </assembly>
+    <members>
+        <member name="M:ReadSwap.Api.Controllers.WeatherForecastController.Get">
+            <summary>
+            Retreive the weather for today
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ReadSwap.Api.WeatherForecast">
+            <summary>
+            The forcast of the day
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Api.WeatherForecast.Date">
+            <summary>
+            The date for the forcast
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Api.WeatherForecast.TemperatureC">
+            <summary>
+            Tmp in c
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Api.WeatherForecast.TemperatureF">
+            <summary>
+            Tmp in F
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Api.WeatherForecast.Summary">
+            <summary>
+            Small Desciption
+            </summary>
+        </member>
+    </members>
+</doc>

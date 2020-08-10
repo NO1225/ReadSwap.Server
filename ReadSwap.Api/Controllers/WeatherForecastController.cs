@@ -23,6 +23,10 @@ namespace ReadSwap.Api.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Retreive the weather for today
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {

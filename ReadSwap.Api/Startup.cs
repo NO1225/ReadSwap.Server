@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
+using ReadSwap.Api.Servicecs;
+using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace ReadSwap.Api
 {
@@ -25,6 +28,8 @@ namespace ReadSwap.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOpenAPI();
+
             services.AddControllers();
         }
 
@@ -36,7 +41,7 @@ namespace ReadSwap.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            app.ConfigureOpenAPI();
 
             app.UseRouting();
 
