@@ -5,19 +5,25 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ReadSwap.Api.Servicecs;
+using ReadSwap.Core.Models;
+using ReadSwap.Data;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace ReadSwap.Api
 {
     public class Startup
     {
+        private readonly string corsPolicy = "AllowAllOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,6 +34,24 @@ namespace ReadSwap.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDataAccess(Configuration);
+
+            services.AddIdentity()
+                .ConfigureIdentityOptions()
+                .ConfigureWeakPassward();
+
+            // Allow all origins
+            services.AddCors(options =>
+            {
+                options.AddPolicy(corsPolicy,
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                    });
+            });
+
             services.AddOpenAPI();
 
             services.AddControllers();
@@ -46,6 +70,9 @@ namespace ReadSwap.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            // Adding Cors
+            app.UseCors(corsPolicy);
 
             app.UseEndpoints(endpoints =>
             {
