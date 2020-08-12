@@ -4,6 +4,27 @@
         <name>ReadSwap.Api</name>
     </assembly>
     <members>
+        <member name="M:ReadSwap.Api.Controllers.AuthController.CheckEmailExists(ReadSwap.Core.ApiModels.CheckEmailApiModel.Request)">
+            <summary>
+            Chech if the passed email is already registered
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ReadSwap.Api.Controllers.AuthController.SignUp(ReadSwap.Core.ApiModels.SignUpApiModel.Request)">
+            <summary>
+            Create a new Account
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ReadSwap.Api.Controllers.AuthController.checkEmail(System.String)">
+            <summary>
+            Check if the email already registered
+            </summary>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
         <member name="M:ReadSwap.Api.Controllers.WeatherForecastController.Get">
             <summary>
             Retreive the weather for today
