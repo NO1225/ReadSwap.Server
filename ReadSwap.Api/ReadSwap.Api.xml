@@ -18,6 +18,13 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:ReadSwap.Api.Controllers.AuthController.SignIn(ReadSwap.Core.ApiModels.SignInApiModel.Request)">
+            <summary>
+            Signing in to the account and aqcuaring the token
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
         <member name="M:ReadSwap.Api.Controllers.AuthController.checkEmail(System.String)">
             <summary>
             Check if the email already registered

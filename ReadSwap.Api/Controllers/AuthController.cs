@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ReadSwap.Core.ApiModels;
 using ReadSwap.Core.Models;
+using System;
 using System.Threading.Tasks;
 
 namespace ReadSwap.Api.Controllers
@@ -73,6 +74,38 @@ namespace ReadSwap.Api.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Signing in to the account and aqcuaring the token
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost(nameof(SignIn))]
+        public async Task<ActionResult<ApiRespnse<SignInApiModel.Response>>> SignIn(SignInApiModel.Request request)
+        {
+            var response = new ApiRespnse<SignInApiModel.Response>();
+
+            var user = await _userManager.FindByEmailAsync(request.Email);
+
+            if(user==null)
+            {
+                response.AddError(2);
+                return (response);
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(user, request.Passward, false, false);
+
+            if (result.Succeeded == false)
+            {
+                response.AddError(3);
+                return (response);
+            }
+
+            response.Data = new SignInApiModel.Response();
+
+            response.Data.Token = Guid.NewGuid().ToString();
+
+            return Ok(response);
+        }
 
 
         #region Private Helper

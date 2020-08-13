@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReadSwap.Core</name>
+    </assembly>
+    <members>
+        <member name="P:ReadSwap.Core.ApiModels.CheckEmailApiModel.Request.Email">
+            <summary>
+            The email to check
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.CheckEmailApiModel.Response.Exists">
+            <summary>
+            Wiether the email already registered or not
+            </summary>
+        </member>
+        <member name="T:ReadSwap.Core.ApiModels.SignInApiModel.Request">
+            <summary>
+            The request of the signing in call
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.SignInApiModel.Request.Email">
+            <summary>
+            The email address of the account
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.SignInApiModel.Request.Passward">
+            <summary>
+            The passward of the account
+            </summary>
+        </member>
+        <member name="T:ReadSwap.Core.ApiModels.SignInApiModel.Response">
+            <summary>
+            The response onf the signing in call
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.SignInApiModel.Response.Token">
+            <summary>
+            The token for authantication
+            </summary>
+        </member>
+        <member name="T:ReadSwap.Core.ApiModels.SignUpApiModel.Request">
+            <summary>
+            The request for signing up call
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.SignUpApiModel.Request.Email">
+            <summary>
+            The email of the new account
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.SignUpApiModel.Request.Passward">
+            <summary>
+            The passward of the new account
+            </summary>
+        </member>
+        <member name="T:ReadSwap.Core.ApiModels.SignUpApiModel.Response">
+            <summary>
+            The response of signing up call
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.SignUpApiModel.Response.Email">
+            <summary>
+            The email of the new account
+            </summary>
+        </member>
+    </members>
+</doc>

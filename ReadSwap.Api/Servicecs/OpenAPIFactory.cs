@@ -21,6 +21,7 @@ namespace ReadSwap.Api.Servicecs
 
                 // Include the comments that we wrote in the documentation
                 options.IncludeXmlComments("ReadSwap.Api.xml");
+                options.IncludeXmlComments("ReadSwap.Core.xml");
 
                 // To use unique names with the requests and responses
                 options.CustomSchemaIds(x => x.FullName);

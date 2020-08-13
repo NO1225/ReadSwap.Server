@@ -5,39 +5,37 @@ using System.Text;
 
 namespace ReadSwap.Core.ApiModels
 {
-    public class SignUpApiModel
+    public class SignInApiModel
     {
         /// <summary>
-        /// The request for signing up call
+        /// The request of the signing in call
         /// </summary>
         public class Request
         {
             /// <summary>
-            /// The email of the new account
+            /// The email address of the account
             /// </summary>
             [Required]
             [EmailAddress]
             public string Email { get; set; }
 
             /// <summary>
-            /// The passward of the new account
+            /// The passward of the account
             /// </summary>
             [Required]
-            [MinLength(8)]
-            [MaxLength(20)]
             public string Passward { get; set; }
 
         }
 
         /// <summary>
-        /// The response of signing up call
+        /// The response onf the signing in call
         /// </summary>
         public class Response
         {
             /// <summary>
-            /// The email of the new account
+            /// The token for authantication
             /// </summary>
-            public string Email { get; set; }
+            public string Token { get; set; }
 
         }
     }
