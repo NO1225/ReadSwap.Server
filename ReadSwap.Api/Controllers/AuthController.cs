@@ -1,8 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using ReadSwap.Core.ApiModels;
+using ReadSwap.Core.Interfaces;
 using ReadSwap.Core.Models;
 using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ReadSwap.Api.Controllers
@@ -13,11 +20,13 @@ namespace ReadSwap.Api.Controllers
     {
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
+        private readonly IJwtService _jwtService;
 
-        public AuthController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
+        public AuthController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IJwtService jwtService)
         {
             this._signInManager = signInManager;
             this._userManager = userManager;
+            this._jwtService = jwtService;
         }
 
         /// <summary>
@@ -102,7 +111,10 @@ namespace ReadSwap.Api.Controllers
 
             response.Data = new SignInApiModel.Response();
 
-            response.Data.Token = Guid.NewGuid().ToString();
+            response.Data.Token = _jwtService.GenerateAccessToken(new List<Claim>() { 
+                new Claim(ClaimTypes.Name,user.UserName),
+                new Claim(ClaimTypes.Role,"")
+            });
 
             return Ok(response);
         }

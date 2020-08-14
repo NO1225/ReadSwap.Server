@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ReadSwap.Api.Servicecs
+namespace ReadSwap.Api.Factories
 {
     public static class OpenAPIFactory
     {
@@ -25,6 +25,30 @@ namespace ReadSwap.Api.Servicecs
 
                 // To use unique names with the requests and responses
                 options.CustomSchemaIds(x => x.FullName);
+
+                // Defining the security schema
+                var securitySchema = new OpenApiSecurityScheme()
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                };
+
+                // Adding the bearer token authentaction option to the ui
+                options.AddSecurityDefinition("Bearer", securitySchema);
+
+                // use the token provided with the endpoints call
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    { securitySchema, new[] { "Bearer" } }
+                });
 
             });
 

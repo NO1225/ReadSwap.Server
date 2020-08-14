@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ReadSwap.Api.Servicecs
+namespace ReadSwap.Api.Factories
 {
     public static class IdentityFactory
     {
