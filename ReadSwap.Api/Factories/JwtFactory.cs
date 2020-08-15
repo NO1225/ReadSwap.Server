@@ -39,7 +39,7 @@ namespace ReadSwap.Api.Factories
                     };
                 });
 
-            services.AddSingleton<IJwtService, JwtService>();
+            services.AddSingleton<ITokenService, TokenService>();
 
             return services;
         }

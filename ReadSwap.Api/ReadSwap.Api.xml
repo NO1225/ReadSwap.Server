@@ -32,6 +32,19 @@
             <param name="email"></param>
             <returns></returns>
         </member>
+        <member name="M:ReadSwap.Api.Controllers.TokenController.Refresh(ReadSwap.Core.ApiModels.TokenApiModel.Request)">
+            <summary>
+            Issue a new access token
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ReadSwap.Api.Controllers.TokenController.Revoke">
+            <summary>
+            Delete the current refresh token of the current user
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ReadSwap.Api.Controllers.WeatherForecastController.Get">
             <summary>
             Retreive the weather for today

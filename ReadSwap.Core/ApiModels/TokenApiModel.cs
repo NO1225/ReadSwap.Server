@@ -5,44 +5,34 @@ using System.Text;
 
 namespace ReadSwap.Core.ApiModels
 {
-    public class SignInApiModel
+    public class TokenApiModel
     {
-        /// <summary>
-        /// The request of the signing in call
-        /// </summary>
         public class Request
         {
             /// <summary>
-            /// The email address of the account
+            /// The expired access token
             /// </summary>
             [Required]
-            [EmailAddress]
-            public string Email { get; set; }
+            public string AccessToken { get; set; }
 
             /// <summary>
-            /// The passward of the account
+            /// The refresh token to be used to renew the access token
             /// </summary>
-            /// <example>String123</example>
             [Required]
-            public string Passward { get; set; }
-
+            public string RefreshToken { get; set; }
         }
 
-        /// <summary>
-        /// The response onf the signing in call
-        /// </summary>
         public class Response
         {
             /// <summary>
-            /// The token for authantication
+            /// The new access token
             /// </summary>
             public string AccessToken { get; set; }
 
             /// <summary>
-            /// One time use token to renew the access token
+            /// New one time use refresh token
             /// </summary>
             public string RefreshToken { get; set; }
-
         }
     }
 }

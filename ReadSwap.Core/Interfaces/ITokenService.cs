@@ -5,8 +5,10 @@ using System.Text;
 
 namespace ReadSwap.Core.Interfaces
 {
-    public interface IJwtService
+    public interface ITokenService
     {
         string GenerateAccessToken(List<Claim> claims);
+        string GenerateRefreshToken();
+        ClaimsPrincipal GetClaimsFromExpiredToken(string token);
     }
 }

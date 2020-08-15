@@ -28,15 +28,21 @@
             <summary>
             The passward of the account
             </summary>
+            <example>String123</example>
         </member>
         <member name="T:ReadSwap.Core.ApiModels.SignInApiModel.Response">
             <summary>
             The response onf the signing in call
             </summary>
         </member>
-        <member name="P:ReadSwap.Core.ApiModels.SignInApiModel.Response.Token">
+        <member name="P:ReadSwap.Core.ApiModels.SignInApiModel.Response.AccessToken">
             <summary>
             The token for authantication
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.SignInApiModel.Response.RefreshToken">
+            <summary>
+            One time use token to renew the access token
             </summary>
         </member>
         <member name="T:ReadSwap.Core.ApiModels.SignUpApiModel.Request">
@@ -62,6 +68,31 @@
         <member name="P:ReadSwap.Core.ApiModels.SignUpApiModel.Response.Email">
             <summary>
             The email of the new account
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.TokenApiModel.Request.AccessToken">
+            <summary>
+            The expired access token
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.TokenApiModel.Request.RefreshToken">
+            <summary>
+            The refresh token to be used to renew the access token
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.TokenApiModel.Response.AccessToken">
+            <summary>
+            The new access token
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.TokenApiModel.Response.RefreshToken">
+            <summary>
+            New one time use refresh token
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.Models.AppUser.RefreshToken">
+            <summary>
+            The current refresh token of this user
             </summary>
         </member>
     </members>

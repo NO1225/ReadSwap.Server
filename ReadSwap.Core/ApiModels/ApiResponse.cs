@@ -28,7 +28,7 @@ namespace ReadSwap.Core.ApiModels
         }
     }
 
-    public class ApiRespnse<T> : ApiResponse
+    public class ApiResponse<T> : ApiResponse
     {
         public T Data { get; set; }
     }

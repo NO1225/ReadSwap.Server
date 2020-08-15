@@ -20,13 +20,13 @@ namespace ReadSwap.Api.Controllers
     {
         private readonly SignInManager<AppUser> _signInManager;
         private readonly UserManager<AppUser> _userManager;
-        private readonly IJwtService _jwtService;
+        private readonly ITokenService _tokenService;
 
-        public AuthController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IJwtService jwtService)
+        public AuthController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, ITokenService tokenService)
         {
             this._signInManager = signInManager;
             this._userManager = userManager;
-            this._jwtService = jwtService;
+            this._tokenService = tokenService;
         }
 
         /// <summary>
@@ -35,9 +35,9 @@ namespace ReadSwap.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost(nameof(CheckEmailExists))]
-        public async Task<ActionResult<ApiRespnse<CheckEmailApiModel.Response>>> CheckEmailExists(CheckEmailApiModel.Request request)
+        public async Task<ActionResult<ApiResponse<CheckEmailApiModel.Response>>> CheckEmailExists(CheckEmailApiModel.Request request)
         {
-            var response = new ApiRespnse<CheckEmailApiModel.Response>();
+            var response = new ApiResponse<CheckEmailApiModel.Response>();
             response.Data = new CheckEmailApiModel.Response();
 
             response.Data.Exists = await (checkEmail(request.Email));
@@ -51,9 +51,9 @@ namespace ReadSwap.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost(nameof(SignUp))]
-        public async Task<ActionResult<ApiRespnse<SignUpApiModel.Response>>> SignUp(SignUpApiModel.Request request)
+        public async Task<ActionResult<ApiResponse<SignUpApiModel.Response>>> SignUp(SignUpApiModel.Request request)
         {
-            var response = new ApiRespnse<SignUpApiModel.Response>();
+            var response = new ApiResponse<SignUpApiModel.Response>();
 
             if(await checkEmail(request.Email))
             {
@@ -89,9 +89,9 @@ namespace ReadSwap.Api.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost(nameof(SignIn))]
-        public async Task<ActionResult<ApiRespnse<SignInApiModel.Response>>> SignIn(SignInApiModel.Request request)
+        public async Task<ActionResult<ApiResponse<SignInApiModel.Response>>> SignIn(SignInApiModel.Request request)
         {
-            var response = new ApiRespnse<SignInApiModel.Response>();
+            var response = new ApiResponse<SignInApiModel.Response>();
 
             var user = await _userManager.FindByEmailAsync(request.Email);
 
@@ -111,10 +111,17 @@ namespace ReadSwap.Api.Controllers
 
             response.Data = new SignInApiModel.Response();
 
-            response.Data.Token = _jwtService.GenerateAccessToken(new List<Claim>() { 
-                new Claim(ClaimTypes.Name,user.UserName),
-                new Claim(ClaimTypes.Role,"")
-            });
+            var claims = new List<Claim>() {
+                new Claim(ClaimTypes.Name, user.UserName),
+                //new Claim(ClaimTypes.Role, "")
+            };
+
+            response.Data.AccessToken = _tokenService.GenerateAccessToken(claims);
+            response.Data.RefreshToken = _tokenService.GenerateRefreshToken();
+
+            user.RefreshToken = response.Data.RefreshToken;
+
+            await _userManager.UpdateAsync(user);
 
             return Ok(response);
         }
