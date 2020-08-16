@@ -17,6 +17,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ReadSwap.Api.Factories;
+using ReadSwap.Api.Services;
+using ReadSwap.Core.Interfaces;
 using ReadSwap.Core.Models;
 using ReadSwap.Data;
 using Swashbuckle.AspNetCore.SwaggerUI;
@@ -44,6 +46,9 @@ namespace ReadSwap.Api
                 .ConfigureWeakPassward();
 
             services.AddJwtAuthentication(Configuration);
+
+            services.AddSingleton<ITokenService, TokenService>();
+
 
             // Allow all origins
             services.AddCors(options =>

@@ -51,6 +51,14 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ReadSwap.Api.Helpers.UserHelper.GetClaimsAsync(ReadSwap.Core.Models.AppUser,Microsoft.AspNetCore.Identity.UserManager{ReadSwap.Core.Models.AppUser})">
+            <summary>
+            Return the claims of the passed user to be used in token generation
+            </summary>
+            <param name="user"></param>
+            <param name="userManager"></param>
+            <returns></returns>
+        </member>
         <member name="T:ReadSwap.Api.WeatherForecast">
             <summary>
             The forcast of the day

@@ -22,7 +22,7 @@ namespace ReadSwap.Core.ApiModels
             /// <summary>
             /// The passward of the account
             /// </summary>
-            /// <example>String123</example>
+            /// <example>string123</example>
             [Required]
             public string Passward { get; set; }
 

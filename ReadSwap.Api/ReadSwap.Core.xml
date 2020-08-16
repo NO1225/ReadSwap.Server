@@ -28,7 +28,7 @@
             <summary>
             The passward of the account
             </summary>
-            <example>String123</example>
+            <example>string123</example>
         </member>
         <member name="T:ReadSwap.Core.ApiModels.SignInApiModel.Response">
             <summary>

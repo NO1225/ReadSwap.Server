@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using ReadSwap.Api.Helpers;
 using ReadSwap.Core.ApiModels;
 using ReadSwap.Core.Interfaces;
 using ReadSwap.Core.Models;
@@ -111,12 +112,8 @@ namespace ReadSwap.Api.Controllers
 
             response.Data = new SignInApiModel.Response();
 
-            var claims = new List<Claim>() {
-                new Claim(ClaimTypes.Name, user.UserName),
-                //new Claim(ClaimTypes.Role, "")
-            };
 
-            response.Data.AccessToken = _tokenService.GenerateAccessToken(claims);
+            response.Data.AccessToken = _tokenService.GenerateAccessToken(await user.GetClaimsAsync(_userManager));
             response.Data.RefreshToken = _tokenService.GenerateRefreshToken();
 
             user.RefreshToken = response.Data.RefreshToken;

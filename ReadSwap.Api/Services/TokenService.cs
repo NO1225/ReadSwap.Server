@@ -24,7 +24,7 @@ namespace ReadSwap.Api.Services
             this._jwtOptions = _configuration.GetSection("JwtOptions").Get<JwtOptions>();
         }
 
-        public string GenerateAccessToken(List<Claim> claims)
+        public string GenerateAccessToken(IEnumerable<Claim> claims)
         {
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtOptions.Key));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);

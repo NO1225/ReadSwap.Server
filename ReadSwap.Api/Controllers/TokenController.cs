@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using ReadSwap.Api.Helpers;
 using ReadSwap.Core.ApiModels;
 using ReadSwap.Core.Interfaces;
 using ReadSwap.Core.Models;
@@ -36,7 +37,7 @@ namespace ReadSwap.Api.Controllers
         {
             var princibles = _tokenService.GetClaimsFromExpiredToken(model.AccessToken);
 
-            var user = await _userManager.FindByNameAsync(princibles.Identity.Name);
+            var user = await _userManager.GetUserAsync(princibles);
 
             if(user == null)
             {
@@ -53,14 +54,9 @@ namespace ReadSwap.Api.Controllers
             response.Data = new TokenApiModel.Response();
             response.Data.RefreshToken = _tokenService.GenerateRefreshToken(); ;
 
-            user.RefreshToken = response.Data.RefreshToken;
+            user.RefreshToken = response.Data.RefreshToken;          
 
-            var claims = new List<Claim>() {
-                new Claim(ClaimTypes.Name,user.UserName),
-                //new Claim(ClaimTypes.Role,"")
-            };
-
-            response.Data.AccessToken = _tokenService.GenerateAccessToken(claims);
+            response.Data.AccessToken = _tokenService.GenerateAccessToken(await user.GetClaimsAsync(_userManager));
 
             await _userManager.UpdateAsync(user);
 
@@ -75,7 +71,7 @@ namespace ReadSwap.Api.Controllers
         [Authorize]
         public async Task<ApiResponse> Revoke()
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var user = await _userManager.GetUserAsync(User);
             user.RefreshToken = null;
             await _userManager.UpdateAsync(user);
             return new ApiResponse();

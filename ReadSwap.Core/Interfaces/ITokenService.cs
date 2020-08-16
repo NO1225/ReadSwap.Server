@@ -7,7 +7,7 @@ namespace ReadSwap.Core.Interfaces
 {
     public interface ITokenService
     {
-        string GenerateAccessToken(List<Claim> claims);
+        string GenerateAccessToken(IEnumerable<Claim> claims);
         string GenerateRefreshToken();
         ClaimsPrincipal GetClaimsFromExpiredToken(string token);
     }

@@ -39,8 +39,6 @@ namespace ReadSwap.Api.Factories
                     };
                 });
 
-            services.AddSingleton<ITokenService, TokenService>();
-
             return services;
         }
 
