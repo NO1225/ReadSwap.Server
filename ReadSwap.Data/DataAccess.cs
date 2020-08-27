@@ -14,5 +14,7 @@ namespace ReadSwap.Data
         {
 
         }
+
+        public DbSet<Profile> Profiles { get; set; }
     }
 }

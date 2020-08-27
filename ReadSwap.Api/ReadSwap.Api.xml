@@ -32,6 +32,18 @@
             <param name="email"></param>
             <returns></returns>
         </member>
+        <member name="T:ReadSwap.Api.Controllers.ProfileController">
+            <summary>
+            To manage the user profile
+            </summary>
+        </member>
+        <member name="M:ReadSwap.Api.Controllers.ProfileController.CreateProfile(ReadSwap.Core.ApiModels.CreateProfileApiModel.Request)">
+            <summary>
+            Creating the user Profile
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
         <member name="M:ReadSwap.Api.Controllers.TokenController.Refresh(ReadSwap.Core.ApiModels.TokenApiModel.Request)">
             <summary>
             Issue a new access token
