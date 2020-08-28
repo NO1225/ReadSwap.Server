@@ -11,6 +11,10 @@
     {
       "ErrorCode": 3,
       "Description": "Email and Passward doesn't match"
+    },
+    {
+      "ErrorCode": 4,
+      "Description": "This user doesn't have a profile"
     }
   ]
 }

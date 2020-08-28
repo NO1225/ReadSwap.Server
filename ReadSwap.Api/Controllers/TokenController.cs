@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ReadSwap.Api.Helpers;
 using ReadSwap.Core.ApiModels;
+using ReadSwap.Core.Entities;
 using ReadSwap.Core.Interfaces;
 using ReadSwap.Core.Models;
 

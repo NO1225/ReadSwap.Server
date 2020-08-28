@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using ReadSwap.Core.Entities;
 using ReadSwap.Core.Models;
 using ReadSwap.Data;
 using System;

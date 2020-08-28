@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ReadSwap.Core.ApiModels;
+using ReadSwap.Core.Entities;
 using ReadSwap.Core.Models;
 using ReadSwap.Data;
 
@@ -34,8 +36,8 @@ namespace ReadSwap.Api.Controllers
         /// </summary>
         /// <param name="requestModel"></param>
         /// <returns></returns>
-        [HttpPost]
-        public async Task<ActionResult<ApiResponse>> CreateProfile(CreateProfileApiModel.Request requestModel)
+        [HttpPost(nameof(CreateMyProfile))]
+        public async Task<ActionResult<ApiResponse>> CreateMyProfile(CreateProfileApiModel.Request requestModel)
         {
             var user = await _userManager.GetUserAsync(User);
 
@@ -51,6 +53,92 @@ namespace ReadSwap.Api.Controllers
             await _dataAccess.SaveChangesAsync();
 
             return Ok(new ApiResponse());
+        }
+
+        /// <summary>
+        /// Get the profile of the current logged in user
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet(nameof(GetMyProfile))]
+        public async Task<ActionResult<ApiResponse<GetProfileApiModel.Response>>> GetMyProfile()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            var responseModel = new ApiResponse<GetProfileApiModel.Response>();
+
+            var profile = await _dataAccess.Profiles.FirstOrDefaultAsync(profile => profile.UserId == user.Id);
+
+            if(profile != null)
+            {
+                responseModel.Data = new GetProfileApiModel.Response()
+                {
+                    Id = profile.Id,
+                    Address = profile.Address,
+                    FirstName = profile.FirstName,
+                    LastName = profile.LastName,
+                    // TODO: Add the proper rating
+                    Rating = 0
+                };
+            }
+
+            return Ok(responseModel);
+        }
+
+
+        /// <summary>
+        /// Edit the profile of the currently logged in user
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost(nameof(EditMyProfile))]
+        public async Task<ActionResult<ApiResponse<EditProfileApiModel.Response>>> EditMyProfile(EditProfileApiModel.Request requestModel)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            var responseModel = new ApiResponse<GetProfileApiModel.Response>();
+
+            var profile = await _dataAccess.Profiles.FirstOrDefaultAsync(profile => profile.UserId == user.Id);
+
+            if (profile != null)
+            {
+                bool editted = false;
+                if(!string.IsNullOrEmpty(requestModel.FirstName) && requestModel.FirstName != profile.FirstName )
+                {
+                    editted = true;
+                    profile.FirstName = requestModel.FirstName;
+                }
+                if (!string.IsNullOrEmpty(requestModel.LastName) && requestModel.LastName != profile.LastName)
+                {
+                    editted = true;
+                    profile.LastName = requestModel.LastName;
+                }
+                if (!string.IsNullOrEmpty(requestModel.Address) && requestModel.Address != profile.Address)
+                {
+                    editted = true;
+                    profile.Address = requestModel.Address;
+                }
+
+                if(editted == true)
+                {
+                    _dataAccess.Profiles.Update(profile);
+                    await _dataAccess.SaveChangesAsync();
+                }
+
+                responseModel.Data = new GetProfileApiModel.Response()
+                {
+                    Id = profile.Id,
+                    Address = profile.Address,
+                    FirstName = profile.FirstName,
+                    LastName = profile.LastName,
+                    // TODO: Add the proper rating
+                    Rating = 0
+                };
+            }
+            else
+            {
+                responseModel.AddError(4);
+            }
+
+            return Ok(responseModel);
         }
     }
 }

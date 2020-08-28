@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace ReadSwap.Core.Models
+namespace ReadSwap.Core.Entities
 {
-    public class BaseDataModel
+    public class BaseEntity
     {
         [Key]
         public int Id { get; set; }

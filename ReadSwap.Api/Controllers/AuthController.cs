@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ReadSwap.Api.Helpers;
 using ReadSwap.Core.ApiModels;
+using ReadSwap.Core.Entities;
 using ReadSwap.Core.Interfaces;
 using ReadSwap.Core.Models;
 using System;

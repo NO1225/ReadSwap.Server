@@ -37,11 +37,23 @@
             To manage the user profile
             </summary>
         </member>
-        <member name="M:ReadSwap.Api.Controllers.ProfileController.CreateProfile(ReadSwap.Core.ApiModels.CreateProfileApiModel.Request)">
+        <member name="M:ReadSwap.Api.Controllers.ProfileController.CreateMyProfile(ReadSwap.Core.ApiModels.CreateProfileApiModel.Request)">
             <summary>
             Creating the user Profile
             </summary>
             <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ReadSwap.Api.Controllers.ProfileController.GetMyProfile">
+            <summary>
+            Get the profile of the current logged in user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ReadSwap.Api.Controllers.ProfileController.EditMyProfile(ReadSwap.Core.ApiModels.EditProfileApiModel.Request)">
+            <summary>
+            Edit the profile of the currently logged in user
+            </summary>
             <returns></returns>
         </member>
         <member name="M:ReadSwap.Api.Controllers.TokenController.Refresh(ReadSwap.Core.ApiModels.TokenApiModel.Request)">
@@ -57,44 +69,13 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ReadSwap.Api.Controllers.WeatherForecastController.Get">
-            <summary>
-            Retreive the weather for today
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:ReadSwap.Api.Helpers.UserHelper.GetClaimsAsync(ReadSwap.Core.Models.AppUser,Microsoft.AspNetCore.Identity.UserManager{ReadSwap.Core.Models.AppUser})">
+        <member name="M:ReadSwap.Api.Helpers.UserHelper.GetClaimsAsync(ReadSwap.Core.Entities.AppUser,Microsoft.AspNetCore.Identity.UserManager{ReadSwap.Core.Entities.AppUser})">
             <summary>
             Return the claims of the passed user to be used in token generation
             </summary>
             <param name="user"></param>
             <param name="userManager"></param>
             <returns></returns>
-        </member>
-        <member name="T:ReadSwap.Api.WeatherForecast">
-            <summary>
-            The forcast of the day
-            </summary>
-        </member>
-        <member name="P:ReadSwap.Api.WeatherForecast.Date">
-            <summary>
-            The date for the forcast
-            </summary>
-        </member>
-        <member name="P:ReadSwap.Api.WeatherForecast.TemperatureC">
-            <summary>
-            Tmp in c
-            </summary>
-        </member>
-        <member name="P:ReadSwap.Api.WeatherForecast.TemperatureF">
-            <summary>
-            Tmp in F
-            </summary>
-        </member>
-        <member name="P:ReadSwap.Api.WeatherForecast.Summary">
-            <summary>
-            Small Desciption
-            </summary>
         </member>
     </members>
 </doc>

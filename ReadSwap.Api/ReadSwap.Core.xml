@@ -32,6 +32,80 @@
             </summary>
             <example>Amman-Jordan</example>
         </member>
+        <member name="P:ReadSwap.Core.ApiModels.EditProfileApiModel.Request.FirstName">
+            <summary>
+            The first name of the user
+            </summary>
+            <example>Ali</example>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.EditProfileApiModel.Request.LastName">
+            <summary>
+            The last name of the user
+            </summary>
+            <example>Hussain</example>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.EditProfileApiModel.Request.Address">
+            <summary>
+            The address of the user
+            </summary>
+            <example>Amman-Jordan</example>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.EditProfileApiModel.Response.Id">
+            <summary>
+            The id of this profile
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.EditProfileApiModel.Response.FirstName">
+            <summary>
+            The first name of the user
+            </summary>
+            <example>Ali</example>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.EditProfileApiModel.Response.LastName">
+            <summary>
+            The last name of the user
+            </summary>
+            <example>Hussain</example>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.EditProfileApiModel.Response.Address">
+            <summary>
+            The address of the user
+            </summary>
+            <example>Amman-Jordan</example>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.EditProfileApiModel.Response.Rating">
+            <summary>
+            The rating of the user
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetProfileApiModel.Response.Id">
+            <summary>
+            The id of this profile
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetProfileApiModel.Response.FirstName">
+            <summary>
+            The first name of the user
+            </summary>
+            <example>Ali</example>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetProfileApiModel.Response.LastName">
+            <summary>
+            The last name of the user
+            </summary>
+            <example>Hussain</example>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetProfileApiModel.Response.Address">
+            <summary>
+            The address of the user
+            </summary>
+            <example>Amman-Jordan</example>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetProfileApiModel.Response.Rating">
+            <summary>
+            The rating of the user
+            </summary>
+        </member>
         <member name="T:ReadSwap.Core.ApiModels.SignInApiModel.Request">
             <summary>
             The request of the signing in call
@@ -108,7 +182,7 @@
             New one time use refresh token
             </summary>
         </member>
-        <member name="P:ReadSwap.Core.Models.AppUser.RefreshToken">
+        <member name="P:ReadSwap.Core.Entities.AppUser.RefreshToken">
             <summary>
             The current refresh token of this user
             </summary>

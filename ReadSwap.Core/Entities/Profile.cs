@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace ReadSwap.Core.Models
+namespace ReadSwap.Core.Entities
 {
-    public class Profile:BaseDataModel
+    public class Profile:BaseEntity
     {
         [MaxLength(50)]
         [Required]

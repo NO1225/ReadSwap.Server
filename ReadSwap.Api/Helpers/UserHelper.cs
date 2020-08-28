@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using ReadSwap.Core.Entities;
 using ReadSwap.Core.Models;
 using System;
 using System.Collections.Generic;
