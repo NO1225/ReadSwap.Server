@@ -56,6 +56,18 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ReadSwap.Api.Controllers.ProfileController.GetProfile(System.Int32)">
+            <summary>
+            Get the profile which have the passed id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ReadSwap.Api.Controllers.ProfileController.GetProfileByUserId(System.String)">
+            <summary>
+            Get the profile which is realted to the user of the passed id
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ReadSwap.Api.Controllers.TokenController.Refresh(ReadSwap.Core.ApiModels.TokenApiModel.Request)">
             <summary>
             Issue a new access token

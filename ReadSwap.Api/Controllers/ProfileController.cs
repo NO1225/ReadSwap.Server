@@ -140,5 +140,67 @@ namespace ReadSwap.Api.Controllers
 
             return Ok(responseModel);
         }
+
+        /// <summary>
+        /// Get the profile which have the passed id
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetProfile/{id}")]
+        public async Task<ActionResult<ApiResponse<GetProfileApiModel.Response>>> GetProfile(int id)
+        {
+            var responseModel = new ApiResponse<GetProfileApiModel.Response>();
+
+            var profile = await _dataAccess.Profiles.FirstOrDefaultAsync(profile => profile.Id == id);
+
+            if (profile != null)
+            {
+                responseModel.Data = new GetProfileApiModel.Response()
+                {
+                    Id = profile.Id,
+                    Address = profile.Address,
+                    FirstName = profile.FirstName,
+                    LastName = profile.LastName,
+                    // TODO: Add the proper rating
+                    Rating = 0
+                };
+            }
+
+            return Ok(responseModel);
+        }
+
+        /// <summary>
+        /// Get the profile which is realted to the user of the passed id
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("GetProfileByUserId/{id}")]
+        public async Task<ActionResult<ApiResponse<GetProfileApiModel.Response>>> GetProfileByUserId(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+
+            var responseModel = new ApiResponse<GetProfileApiModel.Response>();
+
+            if(user == null)
+            {
+                responseModel.AddError(5);
+                return Ok(responseModel);
+            }
+
+            var profile = await _dataAccess.Profiles.FirstOrDefaultAsync(profile => profile.UserId == user.Id);
+
+            if (profile != null)
+            {
+                responseModel.Data = new GetProfileApiModel.Response()
+                {
+                    Id = profile.Id,
+                    Address = profile.Address,
+                    FirstName = profile.FirstName,
+                    LastName = profile.LastName,
+                    // TODO: Add the proper rating
+                    Rating = 0
+                };
+            }
+
+            return Ok(responseModel);
+        }
     }
 }

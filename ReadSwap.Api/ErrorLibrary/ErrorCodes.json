@@ -15,6 +15,10 @@
     {
       "ErrorCode": 4,
       "Description": "This user doesn't have a profile"
+    },
+    {
+      "ErrorCode": 5,
+      "Description": "Invalid User Id"
     }
   ]
 }
