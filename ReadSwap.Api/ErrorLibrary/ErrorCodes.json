@@ -1,24 +1,18 @@
-{
-  "errors": [
-    {
-      "ErrorCode": 1,
-      "Description": "Email Already Exists"
-    },
-    {
-      "ErrorCode": 2,
-      "Description": "Email Doesn't Exist"
-    },
-    {
-      "ErrorCode": 3,
-      "Description": "Email and Passward doesn't match"
-    },
-    {
-      "ErrorCode": 4,
-      "Description": "This user doesn't have a profile"
-    },
-    {
-      "ErrorCode": 5,
-      "Description": "Invalid User Id"
-    }
-  ]
+﻿{
+  "en": {
+    "1": "Email Already Exists",
+    "2": "Email Doesn't Exist",
+    "3": "Email and Passward doesn't match",
+    "4": "This user doesn't have a profile",
+    "5": "Invalid User Id"
+  },
+  "ar": {
+    "1": "الايميل موجود مسبقا",
+    "2": "الايميل غير مسجل",
+    "3": "الايميل وكلمة المرور لا يتوافقا",
+    "4": "لا يوجد معلومات لهذا المستخدم",
+    "5": "رقم مستخدم خاطئ"
+  }
+
+
 }

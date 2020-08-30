@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using ReadSwap.Core.ApiModels;
 using ReadSwap.Core.Entities;
 using ReadSwap.Core.Models;
+using ReadSwap.Core.Routes;
 using ReadSwap.Data;
 
 namespace ReadSwap.Api.Controllers
@@ -17,7 +18,6 @@ namespace ReadSwap.Api.Controllers
     /// <summary>
     /// To manage the user profile
     /// </summary>
-    [Route("api/[controller]")]
     [ApiController]
     [Authorize]
     public class ProfileController : ControllerBase
@@ -36,7 +36,7 @@ namespace ReadSwap.Api.Controllers
         /// </summary>
         /// <param name="requestModel"></param>
         /// <returns></returns>
-        [HttpPost(nameof(CreateMyProfile))]
+        [HttpPost(ApiRoutes.CreateMyProfile)]
         public async Task<ActionResult<ApiResponse>> CreateMyProfile(CreateProfileApiModel.Request requestModel)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -59,7 +59,7 @@ namespace ReadSwap.Api.Controllers
         /// Get the profile of the current logged in user
         /// </summary>
         /// <returns></returns>
-        [HttpGet(nameof(GetMyProfile))]
+        [HttpGet(ApiRoutes.GetMyProfile)]
         public async Task<ActionResult<ApiResponse<GetProfileApiModel.Response>>> GetMyProfile()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -89,7 +89,7 @@ namespace ReadSwap.Api.Controllers
         /// Edit the profile of the currently logged in user
         /// </summary>
         /// <returns></returns>
-        [HttpPost(nameof(EditMyProfile))]
+        [HttpPost(ApiRoutes.EditMyProfile)]
         public async Task<ActionResult<ApiResponse<EditProfileApiModel.Response>>> EditMyProfile(EditProfileApiModel.Request requestModel)
         {
             var user = await _userManager.GetUserAsync(User);
@@ -145,7 +145,7 @@ namespace ReadSwap.Api.Controllers
         /// Get the profile which have the passed id
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetProfile/{id}")]
+        [HttpGet(ApiRoutes.GetProfile)]
         public async Task<ActionResult<ApiResponse<GetProfileApiModel.Response>>> GetProfile(int id)
         {
             var responseModel = new ApiResponse<GetProfileApiModel.Response>();
@@ -172,7 +172,7 @@ namespace ReadSwap.Api.Controllers
         /// Get the profile which is realted to the user of the passed id
         /// </summary>
         /// <returns></returns>
-        [HttpGet("GetProfileByUserId/{id}")]
+        [HttpGet(ApiRoutes.GetProfileByUserId)]
         public async Task<ActionResult<ApiResponse<GetProfileApiModel.Response>>> GetProfileByUserId(string id)
         {
             var user = await _userManager.FindByIdAsync(id);

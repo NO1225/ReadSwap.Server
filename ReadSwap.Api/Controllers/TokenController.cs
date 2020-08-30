@@ -12,10 +12,10 @@ using ReadSwap.Core.ApiModels;
 using ReadSwap.Core.Entities;
 using ReadSwap.Core.Interfaces;
 using ReadSwap.Core.Models;
+using ReadSwap.Core.Routes;
 
 namespace ReadSwap.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class TokenController : ControllerBase
     {
@@ -33,7 +33,7 @@ namespace ReadSwap.Api.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost(nameof(Refresh))]
+        [HttpPost(ApiRoutes.Refresh)]
         public async Task<ActionResult<ApiResponse<TokenApiModel.Response>>> Refresh(TokenApiModel.Request model)
         {
             var princibles = _tokenService.GetClaimsFromExpiredToken(model.AccessToken);
@@ -68,7 +68,7 @@ namespace ReadSwap.Api.Controllers
         /// Delete the current refresh token of the current user
         /// </summary>
         /// <returns></returns>
-        [HttpPost(nameof(Revoke))]
+        [HttpPost(ApiRoutes.Revoke)]
         [Authorize]
         public async Task<ApiResponse> Revoke()
         {

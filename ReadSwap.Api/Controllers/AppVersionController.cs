@@ -5,14 +5,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ReadSwap.Core.Routes;
 
 namespace ReadSwap.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class AppVersionController : ControllerBase
     {
-        [HttpGet]
+        [HttpGet(ApiRoutes.ErrorLibrary)]
         public ActionResult ErrorLibrary()
         {
             var path =  Path.Combine(Directory.GetCurrentDirectory(), "ErrorLibrary", "ErrorCodes.json");

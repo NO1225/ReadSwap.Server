@@ -7,6 +7,7 @@ using ReadSwap.Core.ApiModels;
 using ReadSwap.Core.Entities;
 using ReadSwap.Core.Interfaces;
 using ReadSwap.Core.Models;
+using ReadSwap.Core.Routes;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -16,7 +17,6 @@ using System.Threading.Tasks;
 
 namespace ReadSwap.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -36,7 +36,7 @@ namespace ReadSwap.Api.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost(nameof(CheckEmailExists))]
+        [HttpPost(ApiRoutes.CheckEmailExists)]
         public async Task<ActionResult<ApiResponse<CheckEmailApiModel.Response>>> CheckEmailExists(CheckEmailApiModel.Request request)
         {
             var response = new ApiResponse<CheckEmailApiModel.Response>();
@@ -52,7 +52,7 @@ namespace ReadSwap.Api.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost(nameof(SignUp))]
+        [HttpPost(ApiRoutes.SignUp)]
         public async Task<ActionResult<ApiResponse<SignUpApiModel.Response>>> SignUp(SignUpApiModel.Request request)
         {
             var response = new ApiResponse<SignUpApiModel.Response>();
@@ -90,7 +90,7 @@ namespace ReadSwap.Api.Controllers
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        [HttpPost(nameof(SignIn))]
+        [HttpPost(ApiRoutes.SignIn)]
         public async Task<ActionResult<ApiResponse<SignInApiModel.Response>>> SignIn(SignInApiModel.Request request)
         {
             var response = new ApiResponse<SignInApiModel.Response>();
