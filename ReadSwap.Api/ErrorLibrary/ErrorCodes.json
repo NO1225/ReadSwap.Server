@@ -4,14 +4,20 @@
     "2": "Email Doesn't Exist",
     "3": "Email and Passward doesn't match",
     "4": "This user doesn't have a profile",
-    "5": "Invalid User Id"
+    "5": "Invalid User Id",
+    "6": "Wrong password",
+    "7": "Invalid New Password"
   },
   "ar": {
     "1": "الايميل موجود مسبقا",
     "2": "الايميل غير مسجل",
     "3": "الايميل وكلمة المرور لا يتوافقا",
     "4": "لا يوجد معلومات لهذا المستخدم",
-    "5": "رقم مستخدم خاطئ"
+    "5": "رقم مستخدم خاطئ",
+    "6": "كلمة المرور خاطئة",
+    "7": "كلمة المرور الجديدة غير مناسبة"
+
+
   }
 
 

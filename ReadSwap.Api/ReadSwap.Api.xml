@@ -25,6 +25,13 @@
             <param name="request"></param>
             <returns></returns>
         </member>
+        <member name="M:ReadSwap.Api.Controllers.AuthController.ChangePassword(ReadSwap.Core.ApiModels.ChangePasswordApiModel.Request)">
+            <summary>
+            Changing the password of the current user
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
         <member name="M:ReadSwap.Api.Controllers.AuthController.checkEmail(System.String)">
             <summary>
             Check if the email already registered

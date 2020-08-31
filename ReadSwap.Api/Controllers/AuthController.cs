@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -122,6 +123,43 @@ namespace ReadSwap.Api.Controllers
             await _userManager.UpdateAsync(user);
 
             return Ok(response);
+        }
+
+        /// <summary>
+        /// Changing the password of the current user
+        /// </summary>
+        /// <param name="requestModel"></param>
+        /// <returns></returns>
+        [HttpPost(ApiRoutes.ChangePassword)]
+        [Authorize]
+        public async Task<ActionResult<ApiResponse>> ChangePassword(ChangePasswordApiModel.Request requestModel)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            var responseModel = new ApiResponse();
+
+            var correctPassword = await _userManager.CheckPasswordAsync(user, requestModel.OldPassword);
+
+            if(correctPassword == false)
+            {
+                responseModel.AddError(6);
+                return Ok(responseModel);
+            }
+
+            var result = await _userManager.ChangePasswordAsync(user, requestModel.OldPassword,requestModel.NewPassward);
+
+            if(result.Succeeded == false)
+            {
+                // TODO: Get the errors out
+                responseModel.AddError(7);
+            }
+            else
+            {
+                user.RefreshToken = null;
+                await _userManager.UpdateAsync(user);
+            }
+
+            return Ok(responseModel);
         }
 
 

@@ -21,6 +21,8 @@ namespace ReadSwap.Core.Routes
 
         public const string SignIn = "api/Auth/SignIn";
 
+        public const string ChangePassword = "api/Auth/ChangePassword";
+
         #endregion
 
         #region Token
