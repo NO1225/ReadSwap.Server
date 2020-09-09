@@ -20,12 +20,12 @@ namespace ReadSwap.Core.ApiModels
             public string Email { get; set; }
 
             /// <summary>
-            /// The passward of the new account
+            /// The Password of the new account
             /// </summary>
             [Required]
             [MinLength(8)]
             [MaxLength(20)]
-            public string Passward { get; set; }
+            public string Password { get; set; }
 
         }
 

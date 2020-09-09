@@ -25,7 +25,7 @@ namespace ReadSwap.Core.ApiModels
             [Required]
             [MinLength(8)]
             [MaxLength(20)]
-            public string NewPassward { get; set; }
+            public string NewPassword { get; set; }
 
         }
 

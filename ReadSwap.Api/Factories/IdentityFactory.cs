@@ -34,12 +34,12 @@ namespace ReadSwap.Api.Factories
         }
 
 
-        public static IServiceCollection ConfigureWeakPassward(this IServiceCollection services)
+        public static IServiceCollection ConfigureWeakPassword(this IServiceCollection services)
         {
 
             services.Configure<IdentityOptions>(options =>
             {
-                // Very weak passward
+                // Very weak Password
                 options.Password.RequiredLength = 8;
                 options.Password.RequireDigit = false;
                 options.Password.RequireNonAlphanumeric = false;

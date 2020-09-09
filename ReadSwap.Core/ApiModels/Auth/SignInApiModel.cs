@@ -20,11 +20,11 @@ namespace ReadSwap.Core.ApiModels
             public string Email { get; set; }
 
             /// <summary>
-            /// The passward of the account
+            /// The Password of the account
             /// </summary>
             /// <example>string123</example>
             [Required]
-            public string Passward { get; set; }
+            public string Password { get; set; }
 
         }
 

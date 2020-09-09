@@ -12,6 +12,10 @@ namespace ReadSwap.Data
     {
         public DbSet<Profile> Profiles { get; set; }
 
+        public DbSet<Book> Books { get; set; }
+
+        public DbSet<BookImage> BookImages { get; set; }
+
         public DataAccess(DbContextOptions options) : base(options)
         {
 
@@ -23,6 +27,10 @@ namespace ReadSwap.Data
 
             // One to One
             builder.Entity<Profile>().HasIndex(profile => profile.UserId).IsUnique();
+
+            builder.Entity<Book>().HasIndex(book => book.BookImageId).IsUnique();
+            builder.Entity<Book>().HasOne<BookImage>(b => b.BookImage).WithOne().HasForeignKey<Book>(b=>b.BookImageId).OnDelete(DeleteBehavior.NoAction);
+            builder.Entity<BookImage>().HasOne<Book>(bi => bi.Book).WithMany(b => b.BookImages).OnDelete(DeleteBehavior.NoAction);
         }
 
     }

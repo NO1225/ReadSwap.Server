@@ -14,7 +14,7 @@
             The old password
             </summary>
         </member>
-        <member name="P:ReadSwap.Core.ApiModels.ChangePasswordApiModel.Request.NewPassward">
+        <member name="P:ReadSwap.Core.ApiModels.ChangePasswordApiModel.Request.NewPassword">
             <summary>
             the new password to replace the old on
             </summary>
@@ -40,9 +40,9 @@
             The email address of the account
             </summary>
         </member>
-        <member name="P:ReadSwap.Core.ApiModels.SignInApiModel.Request.Passward">
+        <member name="P:ReadSwap.Core.ApiModels.SignInApiModel.Request.Password">
             <summary>
-            The passward of the account
+            The Password of the account
             </summary>
             <example>string123</example>
         </member>
@@ -71,9 +71,9 @@
             The email of the new account
             </summary>
         </member>
-        <member name="P:ReadSwap.Core.ApiModels.SignUpApiModel.Request.Passward">
+        <member name="P:ReadSwap.Core.ApiModels.SignUpApiModel.Request.Password">
             <summary>
-            The passward of the new account
+            The Password of the new account
             </summary>
         </member>
         <member name="T:ReadSwap.Core.ApiModels.SignUpApiModel.Response">

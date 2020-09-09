@@ -71,7 +71,7 @@ namespace ReadSwap.Api.Controllers
 
             };
 
-            var result = await _userManager.CreateAsync(appUser, request.Passward);
+            var result = await _userManager.CreateAsync(appUser, request.Password);
 
             if(result.Succeeded == false)
             {
@@ -104,7 +104,7 @@ namespace ReadSwap.Api.Controllers
                 return (response);
             }
 
-            var result = await _signInManager.PasswordSignInAsync(user, request.Passward, false, false);
+            var result = await _signInManager.PasswordSignInAsync(user, request.Password, false, false);
 
             if (result.Succeeded == false)
             {
@@ -146,7 +146,7 @@ namespace ReadSwap.Api.Controllers
                 return Ok(responseModel);
             }
 
-            var result = await _userManager.ChangePasswordAsync(user, requestModel.OldPassword,requestModel.NewPassward);
+            var result = await _userManager.ChangePasswordAsync(user, requestModel.OldPassword,requestModel.NewPassword);
 
             if(result.Succeeded == false)
             {
