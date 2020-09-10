@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ReadSwap.Data;
 
 namespace ReadSwap.Data.Migrations
 {
     [DbContext(typeof(DataAccess))]
-    partial class DataAccessModelSnapshot : ModelSnapshot
+    [Migration("20200910113715_fixing typo")]
+    partial class fixingtypo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -235,7 +237,7 @@ namespace ReadSwap.Data.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("BookImageId")
+                    b.Property<int>("BookImageId")
                         .HasColumnType("int");
 
                     b.Property<int>("Condition")
@@ -267,8 +269,7 @@ namespace ReadSwap.Data.Migrations
                     b.HasIndex("AppUserId");
 
                     b.HasIndex("BookImageId")
-                        .IsUnique()
-                        .HasFilter("[BookImageId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Books");
                 });
@@ -410,7 +411,8 @@ namespace ReadSwap.Data.Migrations
                     b.HasOne("ReadSwap.Core.Entities.BookImage", "BookImage")
                         .WithOne()
                         .HasForeignKey("ReadSwap.Core.Entities.Book", "BookImageId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ReadSwap.Core.Entities.BookImage", b =>

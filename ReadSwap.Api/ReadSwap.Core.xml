@@ -86,6 +86,31 @@
             The email of the new account
             </summary>
         </member>
+        <member name="P:ReadSwap.Core.ApiModels.AddBookApiModel.Request.Title">
+            <summary>
+            The title of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.AddBookApiModel.Request.Condition">
+            <summary>
+            The condition of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.AddBookApiModel.Request.Author">
+            <summary>
+            The author of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.AddBookApiModel.Request.Year">
+            <summary>
+            The publish year of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.AddBookApiModel.Request.Description">
+            <summary>
+            Desciption about the book
+            </summary>
+        </member>
         <member name="P:ReadSwap.Core.ApiModels.CreateProfileApiModel.Request.FirstName">
             <summary>
             The first name of the user

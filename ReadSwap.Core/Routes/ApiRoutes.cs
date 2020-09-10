@@ -46,5 +46,13 @@ namespace ReadSwap.Core.Routes
         public const string GetProfileByUserId = "api/Profile/GetProfileByUserId/{id}";
 
         #endregion
+
+        #region Book
+
+        public const string AddBook = "api/Book/Add";
+
+        public const string AddBookImage = "api/Book/AddImage/{bookId}";
+
+        #endregion
     }
 }

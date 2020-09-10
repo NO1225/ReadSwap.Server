@@ -13,5 +13,7 @@ namespace ReadSwap.Core.Entities
         /// </summary>
         [MaxLength(50)]
         public string RefreshToken { get; set; }
+
+        public ICollection<Book> Books { get; set; }
     }
 }

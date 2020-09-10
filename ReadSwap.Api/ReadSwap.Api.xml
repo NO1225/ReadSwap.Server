@@ -39,6 +39,13 @@
             <param name="email"></param>
             <returns></returns>
         </member>
+        <member name="M:ReadSwap.Api.Controllers.BookController.AddBook(ReadSwap.Core.ApiModels.AddBookApiModel.Request)">
+            <summary>
+            Adding book to this user collection
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
         <member name="T:ReadSwap.Api.Controllers.ProfileController">
             <summary>
             To manage the user profile
