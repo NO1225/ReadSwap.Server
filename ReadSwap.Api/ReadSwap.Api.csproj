@@ -26,5 +26,9 @@
     <ProjectReference Include="..\ReadSwap.Data\ReadSwap.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 
 </Project>

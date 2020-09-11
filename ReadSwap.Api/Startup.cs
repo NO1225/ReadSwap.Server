@@ -75,6 +75,8 @@ namespace ReadSwap.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.ConfigureOpenAPI();
 
             app.UseRouting();

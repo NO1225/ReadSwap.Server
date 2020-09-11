@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ReadSwap.Core.ApiModels;
 using ReadSwap.Core.Entities;
 using ReadSwap.Core.Routes;
@@ -19,6 +22,9 @@ namespace ReadSwap.Api.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly DataAccess _dataAccess;
+
+        private readonly int _maxFileSize = 1 * 1024 * 1024;
+        private readonly string _imagesFolderPath = "\\images\\bookCovers\\";
 
         public BookController(UserManager<AppUser> userManager, DataAccess dataAccess)
         {
@@ -56,5 +62,72 @@ namespace ReadSwap.Api.Controllers
 
             return Ok(response);
         }
+
+        [HttpPost(ApiRoutes.AddBookImage)]
+        public async Task<ActionResult<ApiResponse>> AddBookImage(int bookId, IFormFile image)
+        {
+            var responseModel = new ApiResponse();
+
+            if (image == null)
+            {
+                responseModel.AddError(9);
+                return Ok(responseModel);
+            }
+
+            var book = await _dataAccess.Books
+                .Include(b=>b.BookImage)
+                .Include(b=>b.BookImages)
+                .FirstOrDefaultAsync(b => b.Id == bookId);
+
+            if(book==null)
+            {
+                responseModel.AddError(8);
+                return Ok(responseModel);
+            }
+
+            if(image.ContentType.Contains("image")==false)
+            {
+                responseModel.AddError(9);
+                return Ok(responseModel);
+            }
+
+            if(image.Length > _maxFileSize)
+            {
+                responseModel.AddError(10);
+                return Ok(responseModel);
+            }
+
+            var ext = Path.GetExtension(image.FileName);
+
+            var name = Guid.NewGuid().ToString();
+
+            var bookImage = new BookImage
+            {
+                ImageName = name + ext,
+            };
+            book.BookImages.Add(bookImage);
+
+            if (book.BookImage == null)
+            {
+                book.BookImage = bookImage;
+            }
+
+
+            var currentDirectory = Directory.GetCurrentDirectory();
+
+            var path = currentDirectory + "\\wwwroot" + _imagesFolderPath ;
+
+            Directory.CreateDirectory(path);
+
+            using(var fileStream = new FileStream(path + name + ext,FileMode.Create))
+            {
+                await image.CopyToAsync(fileStream);
+            }
+
+            await _dataAccess.SaveChangesAsync();
+
+            return Ok(responseModel);
+        }
+
     }
 }

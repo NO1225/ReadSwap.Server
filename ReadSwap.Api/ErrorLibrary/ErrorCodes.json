@@ -6,7 +6,10 @@
     "4": "This user doesn't have a profile",
     "5": "Invalid User Id",
     "6": "Wrong password",
-    "7": "Invalid New Password"
+    "7": "Invalid New Password",
+    "8": "Book Doesn't Exist",
+    "9": "You need to upload an image",
+    "10": "The file is too large"
   },
   "ar": {
     "1": "الايميل موجود مسبقا",
@@ -15,7 +18,10 @@
     "4": "لا يوجد معلومات لهذا المستخدم",
     "5": "رقم مستخدم خاطئ",
     "6": "كلمة المرور خاطئة",
-    "7": "كلمة المرور الجديدة غير مناسبة"
+    "7": "كلمة المرور الجديدة غير مناسبة",
+    "8": "الكتاب غير موجود",
+    "9": "يجب عليك رفع صورة",
+    "10": "الصورة كبيرة جدا"
 
 
   }
