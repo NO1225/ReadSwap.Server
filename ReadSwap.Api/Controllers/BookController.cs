@@ -63,6 +63,12 @@ namespace ReadSwap.Api.Controllers
             return Ok(response);
         }
 
+        /// <summary>
+        /// Add Image to the collection of a book images
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <param name="image"></param>
+        /// <returns></returns>
         [HttpPost(ApiRoutes.AddBookImage)]
         public async Task<ActionResult<ApiResponse>> AddBookImage(int bookId, IFormFile image)
         {
@@ -129,5 +135,105 @@ namespace ReadSwap.Api.Controllers
             return Ok(responseModel);
         }
 
+
+        /// <summary>
+        /// Add Image to the collection of a book images
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        [HttpGet(ApiRoutes.GetMyBooks)]
+        public async Task<ActionResult<ApiResponse<GetBooksApiModel.Response>>> GetMyBooks()
+        {
+            var responseModel = new ApiResponse<GetBooksApiModel.Response>();
+
+            var user = await _userManager.GetUserAsync(User);
+
+            responseModel.Data = new GetBooksApiModel.Response() {
+                Books = await _dataAccess.Books.
+                Where(b => b.AppUserId == user.Id)
+                .Include(b => b.BookImage)
+                .Select(b => new GetBooksApiModel.Book
+                {
+                    Author = b.Author,
+                    BookId = b.Id,
+                    Condition = b.Condition,
+                    CoverPath = $"{_imagesFolderPath}{b.BookImage.ImageName}",
+                    Description = b.Description,
+                    Title = b.Title,
+                    Year = b.Year
+                }).ToListAsync(),
+            };
+
+            return Ok(responseModel);
+        }
+
+        /// <summary>
+        /// Add Image to the collection of a book images
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        [HttpGet(ApiRoutes.GetBookById)]
+        public async Task<ActionResult<ApiResponse<GetBookApiModel.Response>>> GetBookById(int bookId)
+        {
+            var responseModel = new ApiResponse<GetBookApiModel.Response>();
+
+            var book = await _dataAccess.Books.Include(b => b.BookImage).Include(b => b.BookImages).FirstOrDefaultAsync(b => b.Id == bookId);
+
+            if (book == null)
+            {
+                responseModel.AddError(8);
+                return Ok(responseModel);
+            }
+
+            responseModel.Data = new GetBookApiModel.Response()
+            {
+                Author = book.Author,
+                BookId = book.Id,
+                Condition = book.Condition,
+                Description = book.Description,
+                Title = book.Title,
+                Year = book.Year,
+                BookImages = book.BookImages.Select(bi => new GetBookApiModel.BookImage
+                {
+                    BookImageId = bi.Id,
+                    ImagePath = $"{_imagesFolderPath}{bi.ImageName}",
+                    IsCover = bi.Id == book.BookImageId
+                }).ToList()
+            };
+
+            return Ok(responseModel);
+        }
+
+        /// <summary>
+        /// Add Image to the collection of a book images
+        /// </summary>
+        /// <param name="bookId"></param>
+        /// <param name="image"></param>
+        /// <returns></returns>
+        [HttpPost(ApiRoutes.ChangeBookCover)]
+        public async Task<ActionResult<ApiResponse>> ChangeBookCover(ChangeBookCoverApiModel.Request requestModel)
+        {
+            var responseModel = new ApiResponse();
+
+            var user = await _userManager.GetUserAsync(User);
+
+            var book = await _dataAccess.Books
+                .Include(b => b.BookImage)
+                .Include(b => b.BookImages)
+                .FirstOrDefaultAsync(b => (b.Id == requestModel.BookId && b.AppUserId == user.Id)&&b.BookImages.Select(bi=>bi.Id).Contains(requestModel.BookImageId));
+
+            if (book == null)
+            {
+                responseModel.AddError(8);
+                return Ok(responseModel);
+            }
+
+            book.BookImageId = requestModel.BookImageId;
+            await _dataAccess.SaveChangesAsync();
+
+            return Ok(responseModel);
+        }
     }
 }

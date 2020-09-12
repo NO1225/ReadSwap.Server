@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Text;
 
 namespace ReadSwap.Core.Routes
@@ -52,6 +53,12 @@ namespace ReadSwap.Core.Routes
         public const string AddBook = "api/Book/Add";
 
         public const string AddBookImage = "api/Book/AddImage/{bookId}";
+
+        public const string GetBookById = "api/Book/GetById/{bookId}";
+
+        public const string GetMyBooks = "api/Book/GetMyBooks";
+
+        public const string ChangeBookCover = "api/Book/ChangeCover";
 
         #endregion
     }

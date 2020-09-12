@@ -111,6 +111,76 @@
             Desciption about the book
             </summary>
         </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBookApiModel.Response.BookId">
+            <summary>
+            THe id of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBookApiModel.Response.Title">
+            <summary>
+            The title of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBookApiModel.Response.Condition">
+            <summary>
+            The condition of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBookApiModel.Response.Author">
+            <summary>
+            The author of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBookApiModel.Response.Year">
+            <summary>
+            The publish year of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBookApiModel.Response.Description">
+            <summary>
+            Desciption about the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBookApiModel.BookImage.ImagePath">
+            <summary>
+            The Url to the image of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBooksApiModel.Book.BookId">
+            <summary>
+            THe id of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBooksApiModel.Book.Title">
+            <summary>
+            The title of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBooksApiModel.Book.Condition">
+            <summary>
+            The condition of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBooksApiModel.Book.Author">
+            <summary>
+            The author of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBooksApiModel.Book.Year">
+            <summary>
+            The publish year of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBooksApiModel.Book.Description">
+            <summary>
+            Desciption about the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.GetBooksApiModel.Book.CoverPath">
+            <summary>
+            The Url to the cover of the book
+            </summary>
+        </member>
         <member name="P:ReadSwap.Core.ApiModels.CreateProfileApiModel.Request.FirstName">
             <summary>
             The first name of the user
