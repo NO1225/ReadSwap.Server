@@ -60,6 +60,10 @@ namespace ReadSwap.Core.Routes
 
         public const string ChangeBookCover = "api/Book/ChangeCover";
 
+        public const string DeleteBookImage = "api/Book/DeleteImage/{bookImageId}";
+
+        public const string SearchBookByTitle = "api/Book/GetByTitle/{bookTitle}";
+
         #endregion
     }
 }

@@ -8,14 +8,27 @@ using System.Text;
 
 namespace ReadSwap.Core.Entities
 {
-    public class Book:BaseEntity
+    public class Book : BaseEntity
     {
+        private string title;
+
         [MaxLength(200)]
         [Required]
-        public string Title { get; set; }
-        
+        public string Title
+        {
+            get => title; set
+            {
+                title = value;
+                NormalizedTitle = title.ToUpper();
+            }
+        }
+
+        [MaxLength(200)]
         [Required]
-        [Range(1,10)]
+        public string NormalizedTitle { get; set; }
+
+        [Required]
+        [Range(1, 10)]
         public int Condition { get; set; }
 
         [MaxLength(50)]

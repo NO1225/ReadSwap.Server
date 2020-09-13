@@ -9,7 +9,8 @@
     "7": "Invalid New Password",
     "8": "Book Doesn't Exist",
     "9": "You need to upload an image",
-    "10": "The file is too large"
+    "10": "The file is too large",
+    "11": "Book Image Doesn't Exist"
   },
   "ar": {
     "1": "الايميل موجود مسبقا",
@@ -21,7 +22,8 @@
     "7": "كلمة المرور الجديدة غير مناسبة",
     "8": "الكتاب غير موجود",
     "9": "يجب عليك رفع صورة",
-    "10": "الصورة كبيرة جدا"
+    "10": "الصورة كبيرة جدا",
+    "11": "الصورة غير موجودة"
 
 
   }
