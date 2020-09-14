@@ -181,6 +181,31 @@
             The Url to the cover of the book
             </summary>
         </member>
+        <member name="P:ReadSwap.Core.ApiModels.UpdateBookApiModel.Request.Title">
+            <summary>
+            The title of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.UpdateBookApiModel.Request.Condition">
+            <summary>
+            The condition of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.UpdateBookApiModel.Request.Author">
+            <summary>
+            The author of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.UpdateBookApiModel.Request.Year">
+            <summary>
+            The publish year of the book
+            </summary>
+        </member>
+        <member name="P:ReadSwap.Core.ApiModels.UpdateBookApiModel.Request.Description">
+            <summary>
+            Desciption about the book
+            </summary>
+        </member>
         <member name="P:ReadSwap.Core.ApiModels.CreateProfileApiModel.Request.FirstName">
             <summary>
             The first name of the user

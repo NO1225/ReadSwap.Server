@@ -46,7 +46,14 @@
             <param name="requestModel"></param>
             <returns></returns>
         </member>
-        <member name="M:ReadSwap.Api.Controllers.BookController.AddBookImage(System.Int32,Microsoft.AspNetCore.Http.IFormFile)">
+        <member name="M:ReadSwap.Api.Controllers.BookController.UpdateBook(ReadSwap.Core.ApiModels.UpdateBookApiModel.Request)">
+            <summary>
+            Adding book to this user collection
+            </summary>
+            <param name="requestModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ReadSwap.Api.Controllers.BookController.DeleteBook(System.Int32)">
             <summary>
             Add Image to the collection of a book images
             </summary>
@@ -70,6 +77,22 @@
             <param name="image"></param>
             <returns></returns>
         </member>
+        <member name="M:ReadSwap.Api.Controllers.BookController.SearchBookByTitle(System.String)">
+            <summary>
+            Add Image to the collection of a book images
+            </summary>
+            <param name="bookId"></param>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ReadSwap.Api.Controllers.BookController.AddBookImage(System.Int32,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Add Image to the collection of a book images
+            </summary>
+            <param name="bookId"></param>
+            <param name="image"></param>
+            <returns></returns>
+        </member>
         <member name="M:ReadSwap.Api.Controllers.BookController.ChangeBookCover(ReadSwap.Core.ApiModels.ChangeBookCoverApiModel.Request)">
             <summary>
             Add Image to the collection of a book images
@@ -79,14 +102,6 @@
             <returns></returns>
         </member>
         <member name="M:ReadSwap.Api.Controllers.BookController.DeleteBookImage(System.Int32)">
-            <summary>
-            Add Image to the collection of a book images
-            </summary>
-            <param name="bookId"></param>
-            <param name="image"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ReadSwap.Api.Controllers.BookController.SearchBookByTitle(System.String)">
             <summary>
             Add Image to the collection of a book images
             </summary>

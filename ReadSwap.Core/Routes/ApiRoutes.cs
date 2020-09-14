@@ -52,6 +52,10 @@ namespace ReadSwap.Core.Routes
 
         public const string AddBook = "api/Book/Add";
 
+        public const string UpdateBook = "api/Book/Update";
+
+        public const string DeleteBook = "api/Book/Delete/{bookId}";
+
         public const string AddBookImage = "api/Book/AddImage/{bookId}";
 
         public const string GetBookById = "api/Book/GetById/{bookId}";
